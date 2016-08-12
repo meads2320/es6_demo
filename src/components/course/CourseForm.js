@@ -2,7 +2,7 @@ import React from 'react';
 import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
-const CourseForm = ({ course, allAuthors, onSave, onChange, loading, errors }) => { 
+const CourseForm = ({ course, allAuthors, onSave, onChange, saving, errors }) => { 
     return(
         <form>
             <h1>Manage Course</h1>
@@ -11,7 +11,7 @@ const CourseForm = ({ course, allAuthors, onSave, onChange, loading, errors }) =
                 label="Title"
                 value={course.title}
                 onChange={onChange}
-                error={error.title} />
+                error={errors.title} />
                 
                 <SelectInput
                 name="authorId"
@@ -19,33 +19,26 @@ const CourseForm = ({ course, allAuthors, onSave, onChange, loading, errors }) =
                 value={course.authorId}
                 onChange={onChange}
                 options={allAuthors}
-                error={error.authorId} />
+                error={errors.authorId} />
 
                 <TextInput
-                name="catergory"
-                label="Catergory"
-                value={course.catergory}
+                name="category"
+                label="Category"
+                value={course.category}
                 onChange={onChange}
-                error={error.catergory} />
+                error={errors.category} />
 
                 <TextInput
                 name="length"
                 label="Length"
                 value={course.length}
                 onChange={onChange}
-                error={error.length} />
-
-                <TextInput
-                name="title"
-                label="Title"
-                value={course.title}
-                onChange={onChange}
-                error={error.title} />
+                error={errors.length} />
 
                 <input 
                 type="submit"
-                disabled={loading}
-                value={loading ? 'Saving..' : 'Save'}
+                disabled={saving}
+                value={saving ? 'Saving..' : 'Save'}
                 className="btn btn-primary"
                 onClick={onSave}
                 />
@@ -59,8 +52,8 @@ CourseForm.propTypes = {
     allAuthors : React.PropTypes.array,
     onSave:  React.PropTypes.func,
     onChange:  React.PropTypes.func,
-    loading:  React.PropTypes.bool,
-    errors:  React.PropTypes.object,
+    saving:  React.PropTypes.bool,
+    errors:  React.PropTypes.object
 };
 
 export default CourseForm;

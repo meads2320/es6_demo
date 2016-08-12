@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 
-const SelectInput = function(name,label,onChange,defaultOption,value, error) { 
+const SelectInput = ({ name,label,onChange,defaultOption,value, error, options }) => { 
 
      let wrapperClass= 'form-group';
         if(error && error.length > 0) {
@@ -34,7 +34,9 @@ const SelectInput = function(name,label,onChange,defaultOption,value, error) {
         onChange: PropTypes.func.isRequired,
         placeholder: PropTypes.string,
         value: PropTypes.string,
-        error: PropTypes.string
+        error: PropTypes.string,
+        options : PropTypes.arrayOf(PropTypes.object),
+        defaultOption : PropTypes.array
 };
 
 export default SelectInput;
